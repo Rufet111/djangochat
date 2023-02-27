@@ -1,0 +1,17 @@
+body{
+    background-color: coral;
+}
+input{
+    background-color: cornflowerblue;
+    color: darkblue;
+    border-radius: 15px;
+}
+button{
+    background-color: blueviolet;
+    border-radius: 15px;
+    color: darkgreen;
+    margin-left: 20px;
+}
+label{
+    color: darkturquoise;
+}
