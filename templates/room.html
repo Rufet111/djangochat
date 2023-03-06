@@ -15,11 +15,13 @@ body {
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
+  word-wrap: break-word;
 }
 
 .darker {
   border-color: #ccc;
   background-color: #ddd;
+  word-wrap: break-word;
 }
 
 .container::after {
@@ -135,7 +137,7 @@ setInterval(function(){
         {% csrf_token %}
         <input type="hidden" name="username" id="username"  value="{{username}}" />
         <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
-        <input type="text" name="message" id="message" width="100px" autocomplete="off" required/>
+        <input type="text" name="message" id="message" width="100px" placeholder="type a message..." autocomplete="off" required/>
         <input type="submit" value="Send">
         
     </form>
