@@ -1,12 +1,13 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
+from django.utils.html import escape
 # Create your views here.
 
 def login_request(request):
     if request.method=="POST":
-        username=request.POST['username']
-        password=request.POST['password']
+        username=escape(request.POST['username'])
+        password=escape(request.POST['password'])
         user=authenticate(request,username=username,password=password)
 
         if user is not None:
@@ -17,12 +18,12 @@ def login_request(request):
     return render(request,'account/login.html')
 def register_request(request):
     if request.method=="POST":
-        firstname=request.POST["firstname"]
-        lastname=request.POST["lastname"]
-        email=request.POST["email"]
-        password=request.POST["password"]
-        repassord=request.POST["repassord"]
-        username=request.POST["username"]
+        firstname=escape(request.POST["firstname"])
+        lastname=escape(request.POST["lastname"])
+        email=escape(request.POST["email"])
+        password=escape(request.POST["password"])
+        repassord=escape(request.POST["repassord"])
+        username=escape(request.POST["username"])
 
         if password==repassord:
             if User.objects.filter(username=username).exists():
