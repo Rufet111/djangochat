@@ -8,6 +8,7 @@ body {
   margin: 0 auto;
   max-width: 800px;
   padding: 0 20px;
+  background-color: rgb(236 72 153);
 }
 
 .container {
@@ -63,6 +64,28 @@ img{
 .img h3{
   color:yellow;
 }
+h2{
+  color:#DAA520;
+}
+.container{
+  background-color: rgb(124 58 237);
+}
+span{
+  color:#DB7093;
+}
+p{
+  color:#DB7093;
+}
+b{
+  color:red;
+}
+input{
+  background:#D2B48C;
+}
+#display{
+  background:#87CEEB;
+}
+
 </style>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 </head>
@@ -129,8 +152,8 @@ setInterval(function(){
 
     input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #D2B48C;
+    color: rgb(147 51 234);
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -139,7 +162,7 @@ setInterval(function(){
     }
 
     input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #D2B48C;
     }
 
     div {
@@ -154,7 +177,7 @@ setInterval(function(){
         <input type="hidden" name="username" id="username"  value="{{username}}" />
         <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
         <input type="text" name="message" id="message" width="100px" placeholder="type a message..." autocomplete="off" required/>
-        <input type="submit" value="Send">
+        <input  type="submit" value="Send">
         
     </form>
     <a href="{%url 'home'%}"><input type="submit" value="back to home"></a>
