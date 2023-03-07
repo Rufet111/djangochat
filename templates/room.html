@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,13 +54,25 @@ body {
   float: left;
   color: #999;
 }
+img{
+  width:50px;
+}
+.img{
+  background:orange;
+}
+.img h3{
+  color:yellow;
+}
 </style>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 </head>
 <body>
 
 <h2>{{room}} - Chat</h2>
-
+<div class="img" id="first">
+<h3>Fullstuck web development-Rufet</h3>
+<a href="#second"><img src="{%static 'img/second.png'%}"></a>
+</div>
 <div id="display">
 
 <!-- <div class="container darker">
@@ -68,7 +81,10 @@ body {
 </div> -->
 
 </div>
-
+<div class="img" id="second">
+<h3>Fullstuck web development-Rufet</h3>
+<a href="#first"><img src="{%static 'img/first.jpeg'%}"></a>
+</div>
 <script>
 $(document).ready(function(){
 
