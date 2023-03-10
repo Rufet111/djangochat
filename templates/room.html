@@ -56,12 +56,26 @@ body {
   color: white;
 }
 img{
-  width:50px;
+  width:24px;
 }
 .img{
-  background:#FFB6C1;
+  width:10px;
+  background:white;
+  position: fixed;
+  top:0;
+  right:10%;
 }
-.img h3{
+.img1{
+  width:10px;
+  background:white;
+  position: fixed;
+  bottom:0;
+  right:10%;
+}
+#secondd{
+  color:#F08080;
+}
+#firstt{
   color:#F08080;
 }
 h2{
@@ -84,15 +98,38 @@ input{
   background:#D2B48C;
 }
 
+
+#typing-indicator {
+  font-size: 50px;
+  color: #777;
+  
+}
+
+.typing-dot {
+  animation: dot-fade 1s infinite;
+}
+
+@keyframes dot-fade {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
 </style>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 </head>
 <body>
 
 <h2>{{room}} - Chat</h2>
+<h3 id="firstt">Fullstuck web development-Rufet</h3>
 <div class="img" id="first">
-<h3>Fullstuck web development-Rufet</h3>
-<a href="#second"><img src="{%static 'img/second.png'%}"></a>
+
+<a href="#secondd"><img src="{%static 'img/second.png'%}"></a>
 </div>
 <div id="display">
 
@@ -102,11 +139,35 @@ input{
 </div> -->
 
 </div>
-<div class="img" id="second">
-<h3>Fullstuck web development-Rufet</h3>
-<a href="#first"><img src="{%static 'img/first.jpeg'%}"></a>
+
+<span id="typing-indicator"></span>
+<h3 id="secondd">Fullstuck web development-Rufet</h3>
+<div class="img1" id="second">
+
+<a href="#firstt"><img src="{%static 'img/first.jpeg'%}"></a>
 </div>
 <script>
+  $(document).ready(function() {
+    var typingTimer; // timer identifier
+    var doneTypingInterval = 2000; // time in ms, after user stops typing
+
+    // when user starts typing, show typing indicator
+    $('#message').on('input', function() {
+        clearTimeout(typingTimer);
+        $('#typing-indicator').html('<span class="typing-dot">.</span><span class="typing-dot">.</span><span class="typing-dot">.</span>');
+    });
+
+    // when user stops typing, hide typing indicator
+    $('#message').on('keyup', function() {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    });
+
+    // user is done typing
+    function doneTyping() {
+        $('#typing-indicator').empty();
+    }
+});
 $(document).ready(function(){
 
 setInterval(function(){
@@ -118,6 +179,7 @@ setInterval(function(){
             $("#display").empty();
             for (var key in response.messages)
             {
+              
                 var temp="<div class='container darker'><b>"+
                   response.messages[key].user+"</b><p>"+
                     response.messages[key].value+
